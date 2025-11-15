@@ -1,0 +1,118 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdemo9001"
+		},
+		"adb_ls_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'adb_ls'"
+		},
+		"logistics_ls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'logistics_ls'"
+		},
+		"sql_db_ls_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'sql_db_ls'"
+		},
+		"adb_ls_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1027-031916-nr7sk7tc"
+		},
+		"logistics_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://logisticestorageaccount.dfs.core.windows.net/"
+		},
+		"sql_db_ls_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demoserver9001.database.windows.net"
+		},
+		"sql_db_ls_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqldbdemo9001"
+		},
+		"sql_db_ls_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "user1"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfdemo9001_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"adb_ls_accessToken": {
+						"value": "[parameters('adb_ls_accessToken')]"
+					},
+					"logistics_ls_accountKey": {
+						"value": "[parameters('logistics_ls_accountKey')]"
+					},
+					"sql_db_ls_password": {
+						"value": "[parameters('sql_db_ls_password')]"
+					},
+					"adb_ls_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('adb_ls_properties_typeProperties_existingClusterId')]"
+					},
+					"logistics_ls_properties_typeProperties_url": {
+						"value": "[parameters('logistics_ls_properties_typeProperties_url')]"
+					},
+					"sql_db_ls_properties_typeProperties_server": {
+						"value": "[parameters('sql_db_ls_properties_typeProperties_server')]"
+					},
+					"sql_db_ls_properties_typeProperties_database": {
+						"value": "[parameters('sql_db_ls_properties_typeProperties_database')]"
+					},
+					"sql_db_ls_properties_typeProperties_userName": {
+						"value": "[parameters('sql_db_ls_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfdemo9001_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdemo9001_ArmTemplate_0')]"
+			]
+		}
+	]
+}

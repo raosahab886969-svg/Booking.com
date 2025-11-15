@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfdemo9001"
+		},
+		"adb_ls_accessToken": {
+			"value": ""
+		},
+		"logistics_ls_accountKey": {
+			"value": ""
+		},
+		"sql_db_ls_password": {
+			"value": ""
+		},
+		"adb_ls_properties_typeProperties_existingClusterId": {
+			"value": "1027-031916-nr7sk7tc"
+		},
+		"logistics_ls_properties_typeProperties_url": {
+			"value": "https://logisticestorageaccount.dfs.core.windows.net/"
+		},
+		"sql_db_ls_properties_typeProperties_server": {
+			"value": "demoserver9001.database.windows.net"
+		},
+		"sql_db_ls_properties_typeProperties_database": {
+			"value": "sqldbdemo9001"
+		},
+		"sql_db_ls_properties_typeProperties_userName": {
+			"value": "user1"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
