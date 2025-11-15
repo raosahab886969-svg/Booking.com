@@ -1,0 +1,19 @@
+{
+	"name": "sink_csv_file_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "logistics_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "silver/csv",
+				"fileSystem": "logistic"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

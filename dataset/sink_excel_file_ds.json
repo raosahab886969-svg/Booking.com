@@ -1,0 +1,19 @@
+{
+	"name": "sink_excel_file_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "logistics_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "silver/excel",
+				"fileSystem": "logistic"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
