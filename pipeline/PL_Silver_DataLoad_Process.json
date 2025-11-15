@@ -1,0 +1,27 @@
+{
+	"name": "PL_Silver_DataLoad_Process",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Name",
+					"value": "Irfan"
+				}
+			}
+		],
+		"variables": {
+			"Name": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
